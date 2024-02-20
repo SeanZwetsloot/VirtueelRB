@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Sean's virtuele RB trainer</title>
+        <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <style>
+            #randomizeSMirror {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="randomizeSMirror" type="checkbox">
+        
+        <style>
+            #randomizeMMirror {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="randomizeMMirror" type="checkbox">
+        
+        <style>
+            #mirrorAllAlgsAcrossS {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="mirrorAllAlgsAcrossS" type="checkbox">
+        
+        <style>
+            #mirrorAllAlgs {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="mirrorAllAlgs" type="checkbox">
+        
+        <style>
+            #algsetStatistics {
+                display: none; /* Hide the table */
+            }
+        </style>
+        
+        <table id="algsetStatistics">
+            <!-- Table content goes here -->
+        </table>
+        
+        <style>
+            #resetCustomColourScheme {
+                display: none; /* Hide the button */
+            }
+        </style>
+        
+        <button id="resetCustomColourScheme" type="button">Reset</button>
+        
+        <style>
+            #customColourL {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="customColourL" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8">
+        
+        <style>
+            #customColourR {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="customColourR" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8">
+        
+        <style>
+            #customColourB {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="customColourB" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8">
+        
+        <style>
+            #customColourF {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="customColourF" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8">
+        
+        <style>
+            #customColourD {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="customColourD" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8">
+        
+        <style>
+            #customColourU {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="customColourU" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8">
+        
+        <style>
+            #useCustomColourScheme {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="useCustomColourScheme" type="checkbox">
+        
+        <style>
+            #colourneutrality3 {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="colourneutrality3" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="1">
+        
+        <style>
+            #colourneutrality2 {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="colourneutrality2" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="1">
+        
+        <style>
+            #colourneutrality1 {
+                display: none; /* Hide the text input */
+            }
+        </style>
+        
+        <input type="text" id="colourneutrality1" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="1">
+        
+        <style>
+            #fullCN {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="fullCN" type="checkbox">
+        
+        <style>
+            #userDefined {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="userDefined" type="checkbox">
+        
+        <style>
+            #addSelected {
+                display: none; /* Hide the button */
+            }
+        </style>
+        
+        <button id="addSelected"></button>
+        
+        <style>
+            #userDefined {
+                display: none; /* Hide the checkbox */
+            }
+        </style>
+        
+        <input id="userDefined" type="checkbox">
+        
+        <style>
+            #connectGiiker {
+                display: none; /* Hide the button */
+            }
+        </style>
+        
+        <button id="connectGiiker"></button><br>
+        
+        <style>
+            #clearTimes {
+                display: none; /* Hide the button */
+            }
+        </style>
+        
+        <button id="clearTimes"></button>
+        
+        <style>
+            #deleteLast {
+                display: none; /* Hide the button */
+            }
+        </style>
+        
+        <button id="deleteLast"></button>
+        
+
+
+        <div id="loader"></div>
+        <div style="display:none;" id="page" class="animate-bottom">
+
+            <p id="scramble" class=scramble>Scramble</p>
+            <hr>
+            <div class=column_left>
+
+                <select id="algsetpicker" size=18 class=algsetpicker>
+                </select>
+                <div id="cboxes"></div>
+                <br>als je alle vinkjes uit zet dan krijg je alles! 
+
+                <br>
+
+                <h2>instellingen</h2>
+                <form action="javascript:void(0);">
+                    
+                    <input id="useVirtual" type="checkbox">virtuele kubus<br>
+                    <input id="hideTimer" type="checkbox">timer onzichtbaar maken<br>
+                    <input id="showScramble" type="checkbox">laat hussel zien<br>
+                    <input id="realScrambles" type="checkbox">Laat deze altijd aan staan!<br>
+                    <input id="randAUF" type="checkbox">bovenkant kan random gedraaid worden, wel beter voor algoritmes leren<br>
+                    <input id="prescramble" type="checkbox" checked="true">laat deze altijd aan staan!<br>
+                    <input id="goInOrder" type="checkbox">ga op volgorde<br>
+                    <input id="goToNextCase" type="checkbox">Laat het algoritme niet zien als de timer stopt.<br>
+                    <input id="mirrorAllAlgs" type="checkbox"> <span style="font-family: Consolas, monospace;"></span> <input id="randomizeMMirror" type="checkbox"><br>
+                    <input id="mirrorAllAlgsAcrossS" type="checkbox"> <span style="font-family: Consolas, monospace;"></span> <input id="randomizeSMirror" type="checkbox"><br>
+
+                    virtuele kubus instellingen<select id="lines">
+                        <option value="none"> normaal </option>
+                        <option selected value="thin-black"> zwart</option>
+                        <option value="thick-black"> iets dikker zwart </option>
+                        <option value="thin-gray"> grijs </option>
+                        <option value="thick-gray"> iets meer grijs </option>
+                    </select> <br>
+                    selecteer maar welke kubus je wilt <select id="cubeType">
+                        <option value="3x3" default>3x3</option>
+                        <option value="2x2">2x2</option>
+                    </select><br><br>
+                    <button id="connectGiiker"></button><br>
+                    
+                    <br><br>
+                    
+                    
+                    <br><br>
+                    
+                    <input id="userDefined" type="checkbox"> <button id="addSelected"></button><br>
+                    <textarea id="userDefinedAlgs" cols=50 rows=50 style="display:none" onfocus="listener.stop_listening();" onblur="listener.listen();" placeholder="Place one alg per line. Lines starting with # will be ignored"></textarea>
+                    <br>
+
+                    <br>
+
+                    <input id="fullCN" type="checkbox"> <br>
+                    <br>
+                     <br>
+                    
+                    <input type="text" id="colourneutrality1" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="1"> 
+                    <br>
+
+                    
+                    <input type="text" id="colourneutrality2" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="1"> 
+                     <br>
+
+                    
+                    <input type="text" id="colourneutrality3" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="1"> 
+                    <br>
+                    <br>
+                    <a href="scramblingNote.html"></a> 
+                    <br><br>
+
+
+                    <input id="useCustomColourScheme" type="checkbox"><label for="useCustomColourScheme"> </label><br>
+                    <br>
+                    <table>
+                        <tr>
+                            <td><label for="customColourU"></label></td>
+                            <td><input type="text" id="customColourU" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8"> </td>
+                        </tr>
+                        <tr>
+                            <td><label for="customColourD"></label></td>
+                            <td><input type="text" id="customColourD" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8"> </td>
+                        </tr>
+                        <tr>
+                            <td><label for="customColourF"></label></td>
+                            <td><input type="text" id="customColourF" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8"> </td>
+                        </tr>
+                        <tr>
+                            <td><label for="customColourB"></label></td>
+                            <td><input type="text" id="customColourB" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8"> </td>
+                        </tr>
+                        <tr>
+                            <td><label for="customColourR"></label></td>
+                            <td><input type="text" id="customColourR" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8"> </td>
+                        </tr>
+                        <tr>
+                            <td><label for="customColourL"></label></td>
+                            <td><input type="text" id="customColourL" value="" onfocus="listener.stop_listening();" onblur="listener.listen();" size="8"> </td>
+                        </tr>
+                    </table>
+                    <button id="resetCustomColourScheme" type="button">Reset</button>
+
+                </form>
+
+
+
+                <h2></h2>
+
+              <a href=""></a>
+                <br><br>
+                <a href =""></a>
+                <br>
+                <a href=""></a> 
+                <br>
+                 <a href=""></a>, <a href=""></a>
+                <br>
+                 <a href=""></a>
+                <br>
+                <a href=""></a> 
+                <br>
+
+
+
+            </div>
+
+
+
+            <div class=column_middle>
+                <div id="simcube"> 
+                    <canvas id="cube" width="250" height="300" ></canvas>
+                </div>
+
+                <div id="timer_div">
+                    <p id="timer">0.00</p>
+                </div>
+
+                <div id="algdisplayer"> 
+                    <p id="algdisp" class=algdisp>Solution</p>
+                </div>
+
+                <div id="controls">
+                    <button onclick="nextScramble()">Volgende hussel</button>
+                    <button onclick="displayAlgorithmForPreviousTest()">Laat oplossing zien</button>
+                </div>
+            </div>
+
+
+
+            <div class=column_right>
+                <img src="https://www.cubing.net/api/visualcube/?fmt=svg&size=300&view=plan&bg=black&alg=x2" id="visualcube" title="Click to switch between flat and 3D view"/>
+                <p style="font-size: small;">klik op de kubus om te veranderen van 2d of 3d</p>
+
+                <div style="overflow-y: scroll; height:150px;">
+                    <p id="timeList" style="text-align: left">&nbsp</p>
+                </div>
+                <p id="statistics">&nbsp</p>
+
+
+                <div style="text-align: left">
+                    <button id="deleteLast"></button>
+                    <button id="clearTimes"></button>
+                    <br><br>
+                    <table id="algsetStatistics"></table>
+                    </table>
+                    <h2>ff uitleggen</h2>
+                    <b>Enter/Tab/Spatie</b>: husselen.<br>
+                    <b>Spatie</b>: Stop de timer en laat het  algoritme zien.<br>
+                    <b></b> <br>
+                    <b>Backspace</b>: Laat het algoritme zien zonder de timer te starten
+
+                    <h3>ff uitleggen voor de virtuele rubiks cube </h3>
+                    Spatie: Stop de timer,laat het algoritme zien en reset de zooi<br>
+                    De timer stopt automatisch als de rubiks cube is opgelost.<br>
+                    Esc: Reset de zooi zonder het algoritme te laten zien
+                    Pijltje links: Laat vorige algoritme zien<br> 
+                    <h4> Toetsen die je moet gebruiken: <a href="controls.html">niet hier hoor</a>. </h4>
+                    
+
+                    
+                    <br><br>
+
+                     <a href=""></a>
+                    
+                    <br><br>
+                     <a href=""></a> 
+
+                    <br><br>
+                    <a href=""></a> 
+
+                     
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+        <script src="js/giiker.js"></script>
+        <script src="js/cube.js"></script>
+        <script src="js/solve.js"></script>
+        <script src="js/alg_jison.js"></script>
+        <script src="js/alg.js"></script>
+        <script src="js/controls.js"></script>
+        <script src="js/alg_list.js"></script>
+        <script src="js/keymaps.js"></script>
+        <script src="js/RubiksCube.js"></script>
+    </body>
+</html>
